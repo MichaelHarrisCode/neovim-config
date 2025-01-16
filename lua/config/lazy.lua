@@ -26,14 +26,11 @@ require("lazy").setup({
   spec = {
     -- import your plugin
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    {
-      "camspiers/luarocks",
-      priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "catppuccin" } },
+  install = { colorscheme = { "default" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
