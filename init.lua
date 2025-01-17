@@ -8,18 +8,18 @@ vim.cmd.colorscheme("gruvbox")
 vim.opt.number = true
 local relative_numbering = vim.api.nvim_create_augroup("relative_numbering", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
-	group = relative_numbering,
-	pattern = "*",
-	callback = function() 
-		vim.opt.relativenumber = true
-	end,
+  group = relative_numbering,
+  pattern = "*",
+  callback = function() 
+    vim.opt.relativenumber = true
+  end,
 })
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
-	group = relative_numbering,
-	pattern = "*",
-	callback = function() 
-		vim.opt.relativenumber = false
-	end,
+  group = relative_numbering,
+  pattern = "*",
+  callback = function() 
+    vim.opt.relativenumber = false
+  end,
 })
 
 -- Splitting creates new screen on right side
@@ -49,3 +49,17 @@ vim.opt.smartindent = true
 
 -- Enable true colors
 vim.opt.termguicolors = true
+
+
+
+-- Custom filetype indentation rules
+local filetype_indentations = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_indentations,
+  pattern = "lua",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
