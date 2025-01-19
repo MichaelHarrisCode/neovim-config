@@ -4,5 +4,8 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'sharkdp/fd'
-  }
+  },
+  config = function()
+    require('config/telescope')
+  end
 }
