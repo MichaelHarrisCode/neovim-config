@@ -25,7 +25,13 @@ return {
         },
       },
     })
-    lspconfig.clangd.setup {}
+    -- Installed this for Linux kernel development... didn't work out well...
+    -- didn't seem to recognize compile_commands.json and I got sick of dealing 
+    -- with it. If idea ever comes to fix it, go ahead. Otherwise, I don't 
+    -- think I need it... I hate computers
+    --lspconfig.clangd.setup({
+      -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    --})
     lspconfig.rust_analyzer.setup {}
   end
 }

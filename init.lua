@@ -55,15 +55,37 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 
 
+--
+-- AUTOCOMMANDS
+--
 
--- Custom filetype indentation rules
-local filetype_indentations = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
+
+-- Custom filetype rules
+local filetype_rules = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
-  group = filetype_indentations,
+  group = filetype_rules,
   pattern = "lua",
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
     vim.opt_local.expandtab = true
   end,
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "c",
+  callback = function()
+    vim.opt_local.colorcolumn = "80"
+  end,
+})
+
+
+
+
+-- Linter. Literally just for checkpatch.pl for linux kerenel dev =)
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end
 })
