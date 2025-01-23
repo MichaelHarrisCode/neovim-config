@@ -60,7 +60,10 @@ vim.opt.termguicolors = true
 --
 
 
--- Custom filetype rules
+-- Custom filetype rules. Neovim SHOULD have automatic language based
+-- indentation rules, but it's decided to be absolutely stupid and not work.
+-- Stupid garbage truckload of grab that doesn't friggin work I hate computers.
+-- If you ever actually find a solution, these might be deletable.
 local filetype_rules = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
@@ -68,6 +71,16 @@ vim.api.nvim_create_autocmd("Filetype", {
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "javascript",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = true
   end,
 })
