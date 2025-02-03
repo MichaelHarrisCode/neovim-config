@@ -67,7 +67,7 @@ vim.opt.termguicolors = true
 local filetype_rules = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
-  pattern = "lua",
+  pattern = { "lua", "html", "javascript", "typescript" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
-  pattern = { "javascript", "json" },
+  pattern = "json",
   callback = function()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
