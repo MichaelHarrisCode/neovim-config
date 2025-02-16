@@ -85,11 +85,12 @@ vim.api.nvim_create_autocmd("Filetype", {
   end,
 })
 
+-- Rules used for Linux Kernel Coding Style
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
-  pattern = "c",
+  pattern = { "c", "cpp" },
   callback = function()
-    vim.opt_local.colorcolumn = "80"
+    vim.opt_local.colorcolumn = "80,100"
   end,
 })
 
