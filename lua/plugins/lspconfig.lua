@@ -7,7 +7,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "ts_ls" },
+      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "ts_ls", "clangd" },
       automatic_installation = true
     }
 
@@ -32,6 +32,8 @@ return {
     --lspconfig.clangd.setup({
       -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
     --})
+
+    lspconfig.clangd.setup {}
     lspconfig.rust_analyzer.setup {}
     lspconfig.ts_ls.setup {}
   end
