@@ -54,6 +54,15 @@ vim.opt.smartindent = true
 -- Enable true colors
 vim.opt.termguicolors = true
 
+-- I hate code
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 
 --
 -- AUTOCOMMANDS
