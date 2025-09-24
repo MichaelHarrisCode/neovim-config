@@ -99,6 +99,9 @@ vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
   pattern = { "c", "cpp" },
   callback = function()
+    vim.opt_local.indentexpr = ""
+    vim.opt_local.cindent = true
+    vim.opt_local.cinoptions = ":0,l1,t0,g0,(0,u0,U0"
     vim.opt_local.colorcolumn = "80,100"
   end,
 })

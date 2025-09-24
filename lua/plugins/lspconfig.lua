@@ -7,13 +7,11 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "clangd", "rust_analyzer", "ts_ls" },
+      ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls" },
       automatic_installation = true
     }
 
-    local lspconfig = require("lspconfig")
-
-    lspconfig.lua_ls.setup({
+    vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
           diagnostics = {
@@ -33,8 +31,10 @@ return {
       -- capabilities = require('cmp_nvim_lsp').default_capabilities(),
     --})
 
-    lspconfig.clangd.setup {}
-    lspconfig.rust_analyzer.setup {}
-    lspconfig.ts_ls.setup {}
+    -- Disabled for more linux lol stuff. Only seems to work when NOTHINg is working.
+    -- doesn't really display errors in code, unless EVERYTHINg has errors
+    --lspconfig.clangd.setup {}
+    vim.lsp.config('rust_analyze', {})
+    vim.lsp.config('ts_ls', {})
   end
 }
