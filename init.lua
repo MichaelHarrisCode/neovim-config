@@ -54,6 +54,15 @@ vim.opt.smartindent = true
 -- Enable true colors
 vim.opt.termguicolors = true
 
+-- I hate code
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 
 --
 -- AUTOCOMMANDS
@@ -107,11 +116,15 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 -- end work only rules
 
+-- Rules used for Linux Kernel Coding Style
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
-  pattern = "c",
+  pattern = { "c", "cpp" },
   callback = function()
-    vim.opt_local.colorcolumn = "80"
+    vim.opt_local.indentexpr = ""
+    vim.opt_local.cindent = true
+    vim.opt_local.cinoptions = ":0,l1,t0,g0,(0,u0,U0"
+    vim.opt_local.colorcolumn = "80,100"
   end,
 })
 
