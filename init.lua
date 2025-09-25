@@ -35,7 +35,7 @@ vim.cmd("filetype plugin indent on")
 -- Search options - highlights search results as I type, not case-sensitive
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
-vim.opt.ignorecase = true
+-- vim.opt.ignorecase = true -- This is a dumb rule
 
 -- Command line completion? I still don't really know what this is
 vim.opt.wildmenu = true
@@ -67,7 +67,7 @@ vim.opt.termguicolors = true
 local filetype_rules = vim.api.nvim_create_augroup("filetype_indentation", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
-  pattern = { "lua", "html", "javascript", "typescript" },
+  pattern = { "lua", "typescript" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
@@ -84,6 +84,28 @@ vim.api.nvim_create_autocmd("Filetype", {
     vim.opt_local.expandtab = true
   end,
 })
+
+-- work only rules
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "javascript",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.expandtab = false
+  end,
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "html",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = false
+  end,
+})
+-- end work only rules
 
 vim.api.nvim_create_autocmd("Filetype", {
   group = filetype_rules,
