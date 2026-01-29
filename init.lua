@@ -114,6 +114,12 @@ vim.api.nvim_create_autocmd("Filetype", {
     vim.opt_local.expandtab = false
   end,
 })
+
+vim.filetype.add({
+  extension = {
+    ejs = "xml",
+  }
+})
 -- end work only rules
 
 -- Rules used for Linux Kernel Coding Style
