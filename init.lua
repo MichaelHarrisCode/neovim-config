@@ -117,6 +117,15 @@ vim.api.nvim_create_autocmd("Filetype", {
   end,
 })
 
+-- Rules for emails, like using external editor revived with thunderbird
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "mail",
+  callback = function()
+    vim.opt_local.colorcolumn = "72,80"
+  end,
+})
+
 
 
 
