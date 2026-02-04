@@ -63,12 +63,6 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
--- See those invisible trailing whitespace
-vim.opt.list = true
-vim.opt.listchars = {
-  trail = '·',
-}
-
 
 
 --
