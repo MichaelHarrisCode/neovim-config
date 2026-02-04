@@ -14,14 +14,14 @@ local relative_numbering = vim.api.nvim_create_augroup("relative_numbering", { c
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   group = relative_numbering,
   pattern = "*",
-  callback = function() 
+  callback = function()
     vim.opt.relativenumber = true
   end,
 })
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
   group = relative_numbering,
   pattern = "*",
-  callback = function() 
+  callback = function()
     vim.opt.relativenumber = false
   end,
 })
