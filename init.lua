@@ -35,7 +35,7 @@ vim.cmd("filetype plugin indent on")
 -- Search options - highlights search results as I type, not case-sensitive
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
--- vim.opt.ignorecase = true -- This is a dumb rule
+vim.opt.ignorecase = true
 
 -- Command line completion? I still don't really know what this is
 vim.opt.wildmenu = true
