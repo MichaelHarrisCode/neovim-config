@@ -127,6 +127,15 @@ vim.api.nvim_create_autocmd("Filetype", {
   end,
 })
 
+-- Rules for linux kernel git commit
+vim.api.nvim_create_autocmd("Filetype", {
+  group = filetype_rules,
+  pattern = "gitcommit",
+  callback = function()
+    vim.opt_local.colorcolumn = "75"
+  end,
+})
+
 
 
 
