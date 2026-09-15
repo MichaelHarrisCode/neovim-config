@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave"
   group = relative_numbering,
   pattern = "*",
   callback = function()
+    vim.opt.number = true
     vim.opt.relativenumber = false
   end,
 })
