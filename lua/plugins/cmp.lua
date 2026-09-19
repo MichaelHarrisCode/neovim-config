@@ -27,6 +27,7 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         -- select = false means Enter only selects if you explicitly chose an item
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<Tab>"] = cmp.mapping.confirm({ select = false }),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
