@@ -137,12 +137,25 @@ vim.api.nvim_create_autocmd("Filetype", {
   end,
 })
 
-
-
-
 -- Linter. Literally just for checkpatch.pl for linux kerenel dev =)
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
   end
 })
+
+
+
+--
+-- KEYMAPS
+--
+
+-- Close floating windows on <Esc>
+vim.keymap.set("n", "<Esc>", function ()
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= "" then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end, { desc = "Close floating windows" })
